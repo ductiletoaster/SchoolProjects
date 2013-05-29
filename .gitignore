@@ -5,3 +5,6 @@ CS570/a3
 # Ignore all files in sub-dir
 CS570/a2/*
 CS570/a3/*
+
+# Ignore all object files
+*.o
