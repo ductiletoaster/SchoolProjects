@@ -1,13 +1,17 @@
-PROGRAM = prog1
-COMPILER = gcc
+########################################
+## Makefile for Program 1
+########################################
 
-${PROGRAM}:	${PROGRAM}.o
-		${COMPILER} ${PROGRAM}.o -o ${PROGRAM}
+## Program executable name ##
+PROGRAM = p1
 
-${PROGRAM}.o:	${PROGRAM}.h
+## Make definitions ##
+CC = gcc
+#CFLAGS = -g
 
+${PROGRAM}:	p1main.o
+		${CC} -o ${PROGRAM} p1main.o
+
+p1main.o:	p1.h
 clean:
 		rm -f *.o ${PROGRAM}
-
-lint:
-		lint ${PROGRAM}.c
