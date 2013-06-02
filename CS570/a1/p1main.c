@@ -9,14 +9,14 @@
 #include "p1.h"
 
 /**
- * Intializes Program one
+ * Initializes Program one
  */
 int main() {
 
-	// Intialize Local Variables
+	// Initialize Local Variables
 	int fileid;
 	int pid;
-
+        
 	int bufsize;
 	char buffer[STORAGE];
 
@@ -43,14 +43,22 @@ int main() {
 	// Close file
 	close(fileid);
 
-	// Intialize semaphores
+	// Initialize semaphores
 	if ((sem_init(&mutex, 0, 1)) < 0) {
 		perror("Semaphore initialization error"); // Could not initialize mutex
 		exit(EXIT_FAILURE);
 	}
 
 	// Create ten threads
+        for (int i=0;i<MAXTHREADS;i++)
+                pthread_create(&threads[i], NULL, threadFunc,NULL);
+        
+        // wait for (join) all the threads 
+        for (int i=0;i<MAXTHREADS;i++) 
+                pthread_join(threads[i], NULL);
 
+        // exit this thread 
+        pthread_exit((void *)0);
 
 	// Request a lock on mute
 	if(sem_wait(&mutex) < 0) { 
@@ -59,7 +67,7 @@ int main() {
 	}
 
 	/* ENTER CRITICAL ZONE */
-
+        
 
 	/* EXIT CRITICAL ZONE */
 

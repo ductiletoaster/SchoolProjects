@@ -32,6 +32,11 @@
 // Global access semaphore
 sem_t mutex;
 
+// Global Variables
+pthread_t  threads[MAXTHREADS];
+pthread_mutex_t lock;
+pthread_t tid;   //thread iD
+
 // Custom function declarations
 int file_exists(const char *);
 
