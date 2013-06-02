@@ -23,6 +23,7 @@
 // Global definitions
 #define FILENAME "PROCTAB.txt"
 #define MAXTHREADS 10
+#define STORAGE 32
 
 // Included guard definition 
 #ifndef P1_H_INCLUDED
