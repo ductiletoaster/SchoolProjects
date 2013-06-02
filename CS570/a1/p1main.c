@@ -12,6 +12,21 @@
  * Intializes Program one
  */
 int main() {
-	printf("%s\n", "Hello World");
+
+	// Create file
+	// Write the pid of the current process in the new file + carriage return and \n
+	// Close file
+
+	// Intialize semaphores
+	if ((sem_init(&mutex, 0, 1)) < 0)
+		perror("Error: Could not intialize semaphore");
+
+	// Create ten threads
+	printf("%s\n", "Make threads");
+
+	/* DO LOTS OF WORK WITH THREADS */
+
+
+	// Exit with no errors
 	exit(0);
 }

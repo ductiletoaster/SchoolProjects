@@ -3,15 +3,21 @@
 ########################################
 
 ## Program executable name ##
-PROGRAM = p1
+PROGRAM = sem
 
 ## Make definitions ##
-CC = gcc
-#CFLAGS = -g
+CC = gcc -g -Wall -pthread
+SOURCE = p1main.o p1helper.o
 
-${PROGRAM}:	p1main.o
-		${CC} -o ${PROGRAM} p1main.o
 
-p1main.o:	p1.h
+${PROGRAM}:	${SOURCE}
+		${CC} ${SOURCE} -o ${PROGRAM}
+
+p1main.o:	p1main.c p1.h
+	gcc -c p1main.c
+
+p1helper.o:	p1helper.c p1.h
+	gcc -c p1helper.c
+
 clean:
 		rm -f *.o ${PROGRAM}
