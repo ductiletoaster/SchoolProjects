@@ -10,8 +10,19 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h> 
+#include <unistd.h>
 #include <semaphore.h>
 #include <pthread.h>
+#include <fcntl.h>
+#include <assert.h>
+
+// Syntax definitions
+#define FALSE 0
+#define TRUE 1
+
+// Global definitions
+#define FILENAME "PROCTAB.txt"
+#define MAXTHREADS 10
 
 // Included guard definition 
 #ifndef P1_H_INCLUDED
