@@ -20,4 +20,4 @@ p1helper.o:	p1helper.c p1.h
 	gcc -c p1helper.c
 
 clean:
-		rm -f *.o ${PROGRAM}
+		rm -f *.o ${PROGRAM} PROCTAB.txt
