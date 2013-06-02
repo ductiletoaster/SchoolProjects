@@ -29,12 +29,12 @@ int main() {
 
 	// Create file for current processes
 	if((fileid = open(FILENAME, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR)) < 0) {
-		perror("File error");
+		perror("File failed to open");
 		exit(EXIT_FAILURE);
 	}
 
 	// Save to buffer
-	bufsize = sprintf(buffer, "%d\n", pid);
+	bufsize = sprintf(buffer, "%d\r\n", pid);
 
 	// Write the pid of the current process in the new file + carriage return and \n
 	lseek(fileid, 0, SEEK_SET);
@@ -50,10 +50,24 @@ int main() {
 	}
 
 	// Create ten threads
-	printf("%s\n", "Make threads");
 
-	/* DO LOTS OF WORK WITH THREADS */
 
+	// Request a lock on mute
+	if(sem_wait(&mutex) < 0) { 
+		perror("Semaphore wait failed"); // Could get lock on mutex
+		exit(EXIT_FAILURE);
+	}
+
+	/* ENTER CRITICAL ZONE */
+
+
+	/* EXIT CRITICAL ZONE */
+
+	// Release hold on mutex
+	if(sem_post(&mutex) < 0) {
+		perror("Semaphore post failed"); // Could not release mutex
+		exit(EXIT_FAILURE);	
+	}
 
 	// Exit with no errors
 	exit(EXIT_SUCCESS);
