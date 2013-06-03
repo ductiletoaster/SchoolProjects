@@ -17,11 +17,11 @@ int file_exists(const char * filename) {
 	return (stat(filename, &buffer) == 0); // Returns 0 if not found
 }
 
-//Thread function of opening the file and writing to it 
-void *threadFunc(void *arg)
-{
-    // get the calling thread's ID 
+/**
+ * Thread function of opening the file and writing to it 
+ */
+void * thread_fopen(void *arg) {
+    // Get the calling thread's ID 
     tid = pthread_self();
-                
     return NULL;
 }

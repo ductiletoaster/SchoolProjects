@@ -35,9 +35,10 @@ sem_t mutex;
 // Global Variables
 pthread_t  threads[MAXTHREADS];
 pthread_mutex_t lock;
-pthread_t tid;   //thread iD
+pthread_t tid;   // thread id
 
 // Custom function declarations
 int file_exists(const char *);
+void * thread_fopen(void *);
 
 #endif

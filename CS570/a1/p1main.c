@@ -16,7 +16,8 @@ int main() {
 	// Initialize Local Variables
 	int fileid;
 	int pid;
-        
+    int i;    
+
 	int bufsize;
 	char buffer[STORAGE];
 
@@ -50,17 +51,17 @@ int main() {
 	}
 
 	// Create ten threads
-        for (int i=0;i<MAXTHREADS;i++)
-                pthread_create(&threads[i], NULL, threadFunc,NULL);
-        
-        // wait for (join) all the threads 
-        for (int i=0;i<MAXTHREADS;i++) 
-                pthread_join(threads[i], NULL);
+    for (i = 0; i < MAXTHREADS; i++)
+            pthread_create(&threads[i], NULL, thread_fopen,NULL);
+    
+    // wait for (join) all the threads 
+    for (i = 0; i < MAXTHREADS; i++) 
+            pthread_join(threads[i], NULL);
 
-        // exit this thread 
-        pthread_exit((void *)0);
+    // exit this thread 
+    pthread_exit((void *)0);
 
-	// Request a lock on mute
+	// Request a lock on mutex
 	if(sem_wait(&mutex) < 0) { 
 		perror("Semaphore wait failed"); // Could get lock on mutex
 		exit(EXIT_FAILURE);
