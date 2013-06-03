@@ -39,6 +39,6 @@ pthread_t tid;   // thread id
 
 // Custom function declarations
 int file_exists(const char *);
-void * thread_fopen(void *);
+void * thread_routine(void *);
 
 #endif

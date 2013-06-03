@@ -6,12 +6,13 @@
 PROGRAM = sem
 
 ## Make definitions ##
-CC = gcc -g -Wall -pthread
+# -pthread maybe needed on linux machines
+CC = gcc -g -Wall 
 SOURCE = p1main.o p1helper.o
 
 
 ${PROGRAM}:	${SOURCE}
-		${CC} ${SOURCE} -o ${PROGRAM}
+		${CC} -o ${PROGRAM} ${SOURCE} -lrt
 
 p1main.o:	p1main.c p1.h
 	gcc -c p1main.c

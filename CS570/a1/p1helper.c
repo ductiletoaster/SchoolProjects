@@ -20,7 +20,7 @@ int file_exists(const char * filename) {
 /**
  * Thread function of opening the file and writing to it 
  */
-void * thread_fopen(void *arg) {
+void * thread_routine(void *arg) {
     // Get the calling thread's ID 
     tid = pthread_self();
     return NULL;

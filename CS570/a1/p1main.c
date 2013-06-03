@@ -52,7 +52,7 @@ int main() {
 
 	// Create ten threads
     for (i = 0; i < MAXTHREADS; i++)
-            pthread_create(&threads[i], NULL, thread_fopen,NULL);
+            pthread_create(&threads[i], NULL, thread_routine,NULL);
     
     // wait for (join) all the threads 
     for (i = 0; i < MAXTHREADS; i++) 
@@ -80,4 +80,5 @@ int main() {
 
 	// Exit with no errors
 	exit(EXIT_SUCCESS);
+	return 0;
 }
