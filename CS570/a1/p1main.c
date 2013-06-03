@@ -21,9 +21,6 @@ int main() {
 	int bufsize;
 	char buffer[STORAGE];
 
-	// Get current process pid
-	pid = getpid();
-
 	// Check if file exists and if it does delete it
 	if (file_exists(FILENAME))
 		unlink(FILENAME);
@@ -34,16 +31,15 @@ int main() {
 		exit(EXIT_FAILURE);
 	}
 
-	// Save to buffer
+	// Save pid to buffer
+	pid = getpid();
 	bufsize = sprintf(buffer, "%d\r\n", pid);
 
 	// Write the pid of the current process in the new file + carriage return and \n
 	lseek(fileid, 0, SEEK_SET);
 	assert(bufsize == write(fileid, &buffer, bufsize));
+	close(fileid); // Close file
 	
-	// Close file
-	close(fileid);
-
 	// Initialize semaphores
 	if ((sem_init(&mutex, 0, 1)) < 0) {
 		perror("Semaphore initialization error"); // Could not initialize mutex
@@ -61,6 +57,8 @@ int main() {
     // exit this thread 
     pthread_exit((void *)0);
 
+
+// THIS STUFF MAY NEED TO GO INTO THE THREAD ROUTINE //
 	// Request a lock on mutex
 	if(sem_wait(&mutex) < 0) { 
 		perror("Semaphore wait failed"); // Could get lock on mutex
@@ -77,6 +75,7 @@ int main() {
 		perror("Semaphore post failed"); // Could not release mutex
 		exit(EXIT_FAILURE);	
 	}
+// THIS STUFF MAY NEED TO GO INTO THE THREAD ROUTINE //
 
 	// Exit with no errors
 	exit(EXIT_SUCCESS);
