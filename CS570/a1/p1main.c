@@ -12,33 +12,31 @@
  * Initializes Program one
  */
 int main() {
-
 	// Initialize Local Variables
 	int fileid;
 	int pid;
+	struct thread_args arguments;
     int i;    
 
-	int bufsize;
-	char buffer[STORAGE];
+	// Save pid to buffer
+	pid = getpid();
 
 	// Check if file exists and if it does delete it
 	if (file_exists(FILENAME))
 		unlink(FILENAME);
 
-	// Create file for current processes
-	if((fileid = open(FILENAME, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR)) < 0) {
+	// Open file for current processes if doesnt exist create it
+	if((fileid = file_open(FILENAME)) < 0) {
 		perror("File failed to open");
 		exit(EXIT_FAILURE);
 	}
 
-	// Save pid to buffer
-	pid = getpid();
-	bufsize = sprintf(buffer, "%d\r\n", pid);
-
 	// Write the pid of the current process in the new file + carriage return and \n
-	lseek(fileid, 0, SEEK_SET);
-	assert(bufsize == write(fileid, &buffer, bufsize));
-	close(fileid); // Close file
+	if(file_write(fileid, pid) < 0) {
+		perror("File failed to write");
+		exit(EXIT_FAILURE);
+	}
+	close(fileid);
 	
 	// Initialize semaphores
 	if ((sem_init(&mutex, 0, 1)) < 0) {
@@ -46,36 +44,16 @@ int main() {
 		exit(EXIT_FAILURE);
 	}
 
+	// Populate thread arguments
+	arguments.fd = fileid;
+
 	// Create ten threads
     for (i = 0; i < MAXTHREADS; i++)
-            pthread_create(&threads[i], NULL, thread_routine,NULL);
+            pthread_create(&threads[i], NULL, thread_routine, (void *) &arguments);
     
     // wait for (join) all the threads 
     for (i = 0; i < MAXTHREADS; i++) 
             pthread_join(threads[i], NULL);
-
-    // exit this thread 
-    pthread_exit((void *)0);
-
-
-// THIS STUFF MAY NEED TO GO INTO THE THREAD ROUTINE //
-	// Request a lock on mutex
-	if(sem_wait(&mutex) < 0) { 
-		perror("Semaphore wait failed"); // Could get lock on mutex
-		exit(EXIT_FAILURE);
-	}
-
-	/* ENTER CRITICAL ZONE */
-        
-
-	/* EXIT CRITICAL ZONE */
-
-	// Release hold on mutex
-	if(sem_post(&mutex) < 0) {
-		perror("Semaphore post failed"); // Could not release mutex
-		exit(EXIT_FAILURE);	
-	}
-// THIS STUFF MAY NEED TO GO INTO THE THREAD ROUTINE //
 
 	// Exit with no errors
 	exit(EXIT_SUCCESS);

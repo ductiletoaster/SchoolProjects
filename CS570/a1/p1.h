@@ -22,7 +22,9 @@
 
 // Global definitions
 #define FILENAME "PROCTAB.txt"
+#define MAXWRITES 10
 #define MAXTHREADS 10
+#define SLEEPTIME 1
 #define STORAGE 32
 
 // Included guard definition 
@@ -33,12 +35,19 @@
 sem_t mutex;
 
 // Global Variables
-pthread_t  threads[MAXTHREADS];
-pthread_mutex_t lock;
-pthread_t tid;   // thread id
+pthread_t threads[MAXTHREADS];
+
+// Thread specific functions
+void * thread_routine(void *);
 
 // Custom function declarations
+int file_open(const char *);
 int file_exists(const char *);
-void * thread_routine(void *);
+int file_write(int, int);
+
+// Structure for thread routine arguments
+struct thread_args {
+    int fd;
+};
 
 #endif
