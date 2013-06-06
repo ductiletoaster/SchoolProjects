@@ -36,4 +36,7 @@ N/A
 
 Lessons learned:
 The whole idea of how to use semaphores to manage a shared resource.
+Making system calls to read, write and open a file.
+How to request and release hold on mutex.
+Creating and waiting on threads.
 Also, how to deal with compiler flags in the makefile, like how -lrt is needed for UNIX system
