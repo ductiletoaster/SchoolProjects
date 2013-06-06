@@ -1,7 +1,9 @@
 /** 
- * @author: Brian Gebel
- * @version: 05.28.2013
- * @description: SDSU Summer 2013 CS570 Program 1
+ * @author: Brian Gebel, Abhishek Choudhary
+ * @username: masc0974, masc0980
+ * @classInfo: CS570, Summer 2013
+ * @Assignment # 1, Semaphores to manage a shared file
+ * @filename: p1helper.c
  *
  */
 

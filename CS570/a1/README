@@ -1,0 +1,39 @@
+/** 
+ * @author: Brian Gebel, Abhishek Choudhary
+ * @username: masc0974, masc0980
+ * @classInfo: CS570, Summer 2013
+ * @Assignment # 1, Semaphores to manage a shared file
+ * @filename: README
+ *
+ */
+
+Files in the project:
+    makefile
+    p1.h
+    p1helper.c 
+    p1main.c
+    p1thread.c  
+    README
+
+Compile Instructions:
+>>> make
+Just run the make file.
+If you would like to get rid of the object files, you can "make clean" by activating the clean routine in the makefile.
+
+Operating instructions:
+>>>./sem in order to run the executable 
+
+List of significant design ideas:
+We separated different routines: process in p1main.c, thread routine in thread.c and all helpers in p1heleper.c
+Basically, abstracted the different sections of process
+No error handling in helper class, it is done in the main and thread routine
+
+List of extra features: 
+N/A
+
+List of known bugs:
+N/A
+
+Lessons learned:
+The whole idea of how to use semaphores to manage a shared resource.
+Also, how to deal with compiler flags in the makefile, like how -lrt is needed for UNIX system

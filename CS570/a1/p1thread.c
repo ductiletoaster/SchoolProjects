@@ -1,7 +1,9 @@
 /** 
- * @author: Brian Gebel
- * @version: 05.28.2013
- * @description: SDSU Summer 2013 CS570 Program 1
+ * @author: Brian Gebel, Abhishek Choudhary
+ * @username: masc0974, masc0980
+ * @classInfo: CS570, Summer 2013
+ * @Assignment # 1, Semaphores to manage a shared file
+ * @filename: p1thread.c
  *
  */
 
@@ -41,7 +43,7 @@ void * thread_routine(void *args) {
 		}
 
 	    // Write the thread id of the current thread to the existing file
-		if(file_write(fileid, tid) < 0) {
+		if(file_write(fileid, tid) < 0) {  //on my machine, it gives a warning for passing "tid" without a cast, but when i change this "&tid" rohan gives the same error...lol
 			perror("File failed to write");
 			exit(EXIT_FAILURE);
 		}
