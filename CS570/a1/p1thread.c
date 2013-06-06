@@ -43,14 +43,14 @@ void * thread_routine(void *args) {
 		}
 
 	    // Write the thread id of the current thread to the existing file
-		if(file_write(fileid, tid) < 0) {  //on my machine, it gives a warning for passing "tid" without a cast, but when i change this "&tid" rohan gives the same error...lol
+		if(file_write(fileid, (int) tid) < 0) {
 			perror("File failed to write");
 			exit(EXIT_FAILURE);
 		}
 		close(fileid);
 
 		// Output thread id to std out
-		printf("Thread %i is running\n", tid);
+		printf("Thread %d is running\n", (int) tid);
 
 		/* EXIT CRITICAL ZONE */
 
