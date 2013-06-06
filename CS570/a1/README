@@ -24,7 +24,7 @@ Operating instructions:
 >>>./sem in order to run the executable 
 
 List of significant design ideas:
-We separated different routines: process in p1main.c, thread routine in thread.c and all helpers in p1heleper.c
+We separated different routines: process in p1main.c, thread routine in p1thread.c and all helpers in p1heleper.c
 Basically, abstracted the different sections of process
 No error handling in helper class, it is done in the main and thread routine
 
