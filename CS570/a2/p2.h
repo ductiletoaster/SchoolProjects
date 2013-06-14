@@ -30,6 +30,11 @@
 #ifndef P1_H_INCLUDED
 #define P1_H_INCLUDED
 
+// Page replacement algorithms
+int clock_replacement(char *, int, int);
+int line_replacement(char *, int, int);
+int optimal_replacement(char *, int, int);
+
 // Custom function declarations
 int file_exists(const char *);
 int file_read(const char *, void *, size_t);

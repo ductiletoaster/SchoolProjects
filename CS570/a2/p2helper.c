@@ -26,7 +26,8 @@ int file_read(const char * filename, void * contents, size_t size) {
 	int fileid;
 	char buffer[size];
 
-	if (fileid = open(filename, O_RDONLY)) { // Open file in readonly
+	 // Open file in readonly mode and save to buffer
+	if (fileid = open(filename, O_RDONLY)) {
 		if(lseek(fileid, 0, SEEK_SET) < 0) // Seek to begining 
 			return FALSE;
 		if(read(fileid, &buffer, size) < 0) // Read to buffer based on given size
