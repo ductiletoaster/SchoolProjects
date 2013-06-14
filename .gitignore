@@ -1,10 +1,10 @@
 # Ignore specific sub-dir
-CS570/a2
-CS570/a3
+CS570/a2.alain
+CS570/a3.alain
 
 # Ignore all files in sub-dir
-CS570/a2/*
-CS570/a3/*
+CS570/a2.alain/*
+CS570/a3.alain/*
 
 # Ignore all object files
 *.o
