@@ -15,12 +15,12 @@
  */
 int main() {
 	// Initialize Local Variables
-	int nframes;
-	char parray[STORAGE]; // Character reprecentation of pages
+	int nframes, npages;
 	int cfaults, lfaults, ofaults;
+	char buffer[STORAGE];
+	int parray[STORAGE];
 
 	// Get the number of frames from user input
-
 	printf("\nEnter number of frames: ");
 	scanf("%d", nframes);
 
@@ -34,13 +34,17 @@ int main() {
 	}
 	
 	// Open, read and close file save to buffer
-	if (!file_read(FILENAME, &parray, STORAGE))
+	if (!file_read(FILENAME, buffer, STORAGE))
 		perror("File error");
 
+	// Create the page array based on buffer
+	npages = int_array(buffer, parray);
+	printf("%d\n", npages);
+
 	// Execute testing
-	cfaults = clock_replacement(parray, STORAGE, nframes);
-//	lfaults = line_replacement(parray, STORAGE, nframes);
-//	ofaults = optimal_replacement(parray, STORAGE, nframes);
+	cfaults = clock_replacement(parray, npages, nframes);
+//	lfaults = line_replacement(parray, npages, nframes);
+//	ofaults = optimal_replacement(parray, npages, nframes);
 
 	// Output results
 	printf("Total page faults for \"Clock\" algorithm: %d\n", cfaults);

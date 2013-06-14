@@ -13,7 +13,7 @@
 /**
  * Clock page replacement algorithm
  */
-int clock_replacement(char * parray, int psize, int nframes) {
+int clock_replacement(int * parray, int psize, int nframes) {
 
 	// Declare local variables
 	int frame[1000] = {0};
@@ -79,13 +79,13 @@ int clock_replacement(char * parray, int psize, int nframes) {
 /**
  * LRU (lowest replaceable unit) page replacement algorithm
  */
-int line_replacement(char * pparray, int psize, int nframes) {
+int line_replacement(int * pparray, int psize, int nframes) {
 	return 0;
 }
 
 /**
  * Optimal page replacement algorithm
  */
-int optimal_replacement(char * pparray, int psize, int nframes) {
+int optimal_replacement(int * pparray, int psize, int nframes) {
 	return 0;
 }

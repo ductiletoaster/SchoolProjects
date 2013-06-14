@@ -24,19 +24,20 @@
 
 // Global definitions
 #define FILENAME "pages.txt"
-#define STORAGE 1024
+#define STORAGE 64
 
 // Included guard definition 
 #ifndef P1_H_INCLUDED
 #define P1_H_INCLUDED
 
 // Page replacement algorithms
-int clock_replacement(char *, int, int);
-int line_replacement(char *, int, int);
-int optimal_replacement(char *, int, int);
+int clock_replacement(int *, int, int);
+int line_replacement(int *, int, int);
+int optimal_replacement(int *, int, int);
 
 // Custom function declarations
 int file_exists(const char *);
 int file_read(const char *, void *, size_t);
+int int_array(char *, int *);
 
 #endif

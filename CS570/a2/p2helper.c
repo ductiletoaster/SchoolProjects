@@ -25,6 +25,7 @@ int file_read(const char * filename, void * contents, size_t size) {
 	// Declare local variables
 	int fileid;
 	char buffer[size];
+	int length;
 
 	 // Open file in readonly mode and save to buffer
 	if (fileid = open(filename, O_RDONLY)) {
@@ -36,8 +37,34 @@ int file_read(const char * filename, void * contents, size_t size) {
 			return FALSE;
 
 		// Copy contents of buffer to our array
-		strncpy(contents,buffer, size);
+		strncpy(contents, buffer, size);
 		return TRUE;
 	}
 	return FALSE;
+}
+
+/**
+ * Converts char array into a integer array 
+ */
+int int_array(char * buffer, int * array) {
+
+	// Declare local variables
+	int poz;
+	int count;
+	int size;
+
+	// Define local variables
+    count = 0;
+
+	// Get the length of buffer
+	size = strlen(buffer);
+
+    // Read each character and copy to in array
+    while(sscanf(buffer,"%d%n",&array[count], &poz) == 1) {
+        count++;
+        buffer += poz;
+        if(count >= size) 
+        	break;
+    }
+    return count;
 }
