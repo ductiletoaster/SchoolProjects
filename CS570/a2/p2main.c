@@ -15,13 +15,14 @@
  */
 int main() {
 	// Initialize Local Variables
-	int pcount;
-	char pstorage[STORAGE]; // Character reprecentation of pages
+	int nframes;
+	char parray[STORAGE]; // Character reprecentation of pages
+	int cfaults, lfaults, ofaults;
 
 	// Get the number of frames from user input
 
 	printf("\nEnter number of frames: ");
-	scanf("%d", pcount);
+	scanf("%d", nframes);
 
 
 	// Check if file exists then continue with work else error out
@@ -33,10 +34,16 @@ int main() {
 	}
 	
 	// Open, read and close file save to buffer
-	if (!file_read(FILENAME, &pstorage, STORAGE))
+	if (!file_read(FILENAME, &parray, STORAGE))
 		perror("File error");
 
-	printf("%s\n", pstorage);
+	// Execute testing
+	cfaults = clock_replacement(parray, STORAGE, nframes);
+//	lfaults = line_replacement(parray, STORAGE, nframes);
+//	ofaults = optimal_replacement(parray, STORAGE, nframes);
+
+	// Output results
+	printf("Total page faults for \"Clock\" algorithm: %d\n", cfaults);
 
 	// Exit with no errors
 	exit(EXIT_SUCCESS);
