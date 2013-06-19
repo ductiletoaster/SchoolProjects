@@ -31,7 +31,7 @@ p2helper.o:	p2helper.c p2.h
 	gcc -c p2helper.c
 
 input:
-	echo "2 3 2 7 1 5 7 6 2 4 3 5 3 2 5 2 6\n\0" > pages.txt
+	echo "2 3 2 1 5 2 4 5 3 2 5 2\n\0" > pages.txt
 
 clean:
 		rm -f *.o ${PROGRAM} pages.txt

@@ -22,8 +22,8 @@ int main() {
 
 	// Get the number of frames from user input
 	printf("\nEnter number of frames: ");
-	scanf("%d", nframes);
-
+	scanf("%d", &nframes);
+	printf("\n");
 
 	// Check if file exists then continue with work else error out
 	if (!file_exists(FILENAME)) {
@@ -37,17 +37,22 @@ int main() {
 	if (!file_read(FILENAME, buffer, STORAGE))
 		perror("File error");
 
+	// Print test string
+	printf ("Test Data: %.*s", STORAGE - 1, buffer);
+
 	// Create the page array based on buffer
 	npages = int_array(buffer, parray);
-	printf("%d\n", npages);
+	printf("Total number of pages: %d\n", npages);
 
 	// Execute testing
 	cfaults = clock_replacement(parray, npages, nframes);
-//	lfaults = line_replacement(parray, npages, nframes);
-//	ofaults = optimal_replacement(parray, npages, nframes);
+	lfaults = line_replacement(parray, npages, nframes);
+	ofaults = optimal_replacement(parray, npages, nframes);
 
 	// Output results
 	printf("Total page faults for \"Clock\" algorithm: %d\n", cfaults);
+	printf("Total page faults for \"LRU\" algorithm: %d\n", lfaults);
+	printf("Total page faults for \"Optimal\" algorithm: %d\n", ofaults);
 
 	// Exit with no errors
 	exit(EXIT_SUCCESS);
