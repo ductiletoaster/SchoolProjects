@@ -215,8 +215,8 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 			for (i = 0; i < nframes; i++)	
 				lg[i]=0;
 
-			for (i = 0; i < nframes; i++){		//Checks to see if any of the frames are
-				for (k = j + 1; k < npages; k++){		//used later on in the Pages.
+			for (i = 0; i < nframes; i++) {		//Checks to see if any of the frames are
+				for (k = j + 1; k < npages; k++) {		//used later on in the Pages.
 					if (frame[i] == parray[k]) {	//if the frame is used in the future then
 						lg[i] = k - j;	//find the distance between the two and place it into lg[i]
 						break;		//break out of loop
@@ -238,7 +238,7 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 				m = lg[0];
 				index = 0;
 				for (i = 1; i < nframes; i++) {
-					if (m < lg[i]){		//finding frame that is repeated furthest away in the page.
+					if (m < lg[i]) {		//finding frame that is repeated furthest away in the page.
 						m = lg[i];
 						index = i;
 					}
