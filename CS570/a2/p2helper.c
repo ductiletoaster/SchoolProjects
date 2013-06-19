@@ -2,7 +2,7 @@
  * @author: Brian Gebel, Abhishek Choudhary
  * @username: masc0974, masc0980
  * @classInfo: CS570, Summer 2013
- * @Assignment # 1, Semaphores to manage a shared file
+ * @Assignment # 2, Page replacement algorithms
  * @filename: p2helper.c
  *
  */
