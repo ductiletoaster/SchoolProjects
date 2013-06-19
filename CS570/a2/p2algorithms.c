@@ -174,9 +174,15 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 
 	int frame[size];
 	int lg[size];
-	int m, index, i, j ,k , f=0, faultCount=0, fl0=0, fl1=0;
+	int m, index, i, j ,k , f, nfaults, fl0, fl1;
 
-	// set all array values before executing
+	// Defining local variables
+	f = 0;
+	nfaults = 0; 
+	fl0 = 0; 
+	fl1 = 0;
+
+	// Set all array values before executing
 	for (i = 0; i < size; i++) {
 		frame[i] = -1;
 		lg[i] = 0;			
@@ -199,7 +205,7 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 				if (frame[i] == -1) {		//If frame is -1 then the frame is not full.
 					frame[i] = parray[j];	//place page into frame
 					fl1 = 1;			//set flag 1 to 1
-					faultCount++;		//increment fault Count
+					nfaults++;		//increment fault Count
 					break;
 				}
 			}
@@ -239,8 +245,8 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 				}
 			}
 			frame[index] = parray[j];				//place page into frame
-			faultCount++;					//increment fault count
+			nfaults++;					//increment fault count
 		}
 	}
-	return faultCount;
+	return nfaults;
 }

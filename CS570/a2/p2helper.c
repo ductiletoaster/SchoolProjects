@@ -29,11 +29,11 @@ int file_read(const char * filename, void * contents, size_t size) {
 
 	 // Open file in readonly mode and save to buffer
 	if (fileid = open(filename, O_RDONLY)) {
-		if(lseek(fileid, 0, SEEK_SET) < 0) // Seek to begining 
+		if (lseek(fileid, 0, SEEK_SET) < 0) // Seek to begining 
 			return FALSE;
-		if(read(fileid, &buffer, size) < 0) // Read to buffer based on given size
+		if (read(fileid, &buffer, size) < 0) // Read to buffer based on given size
 			return FALSE;
-		if(close(fileid) < 0) // Close file
+		if (close(fileid) < 0) // Close file
 			return FALSE;
 
 		// Copy contents of buffer to our array
@@ -60,10 +60,10 @@ int int_array(char * buffer, int * array) {
 	size = strlen(buffer);
 
     // Read each character and copy to in array
-    while(sscanf(buffer,"%d%n",&array[count], &poz) == 1) {
+    while (sscanf(buffer,"%d%n",&array[count], &poz) == 1) {
         count++;
         buffer += poz;
-        if(count >= size) 
+        if (count >= size) 
         	break;
     }
     return count;

@@ -28,7 +28,7 @@ int main() {
 	// Check if file exists then continue with work else error out
 	if (!file_exists(FILENAME)) {
 		perror("File error");
-		printf("Unable to found file or directory %s\n", FILENAME);
+		printf("Unable to find file or directory %s\n", FILENAME);
 		printf("To generate input please run the cmd: make input\n");
 		exit(EXIT_FAILURE);
 	}
