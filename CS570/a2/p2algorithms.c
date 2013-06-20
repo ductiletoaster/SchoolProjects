@@ -141,7 +141,7 @@ int line_replacement(int * parray, int npages, int nframes) {
 						if (frame[j] != parray[g])	
 							w[j]++;			
 						else       
-							break;	// If value in frame is same as page,Stop.
+							break; // If value in frame is same as page,Stop.
 					}
 				}
 
@@ -181,13 +181,13 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 
 	int frame[size];
 	int lg[size];
-	int m, index, i, j ,k , f, nfaults, fl0, fl1;
+	int m, index, i, j ,k , f, nfaults, flag1, flag2;
 
 	// Defining local variables
 	f = 0;
 	nfaults = 0; 
-	fl0 = 0; 
-	fl1 = 0;
+	flag1 = 0; 
+	flag2 = 0;
 
 	// Set all array values before executing
 	for (i = 0; i < size; i++) {
@@ -196,31 +196,31 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 	}
 
 	for (j = 0; j < npages; j++) {	
-		fl0 = 0; // Set flags to zero
-		fl1 = 0;
+		flag1 = 0; // Set flags to zero
+		flag2 = 0;
 
 		for (i = 0; i < nframes; i++) {
 			// Check the frames to see if it contains page. Set flags to the one if same and then break.
 			if (frame[i] == parray[j]) {	
-				fl0 = 1;		
-				fl1 = 1;
+				flag1 = 1;		
+				flag2 = 1;
 				break;
 			}
 		}
 
-		if (fl0 == 0) {
+		if (flag1 == 0) {
 			for (i = 0; i < nframes; i++) {
                 // If frame is -1, that means that the frame is not full.
 				if (frame[i] == -1) {
 					frame[i] = parray[j]; // Place page into frame
-					fl1 = 1; // Set flag 1 to 1
+					flag2 = 1; // Set flag 1 to 1
 					nfaults++; // Increment fault Count
 					break;
 				}
 			}
 		}
 
-		if (fl1 == 0) {
+		if (flag2 == 0) {
 			for (i = 0; i < nframes; i++)	
 				lg[i]=0;
 			
@@ -247,7 +247,7 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 				}
 			}
 
-			if (f == 0){				
+			if (f == 0) {				
 				m = lg[0];
 				index = 0;
 				for (i = 1; i < nframes; i++) {
