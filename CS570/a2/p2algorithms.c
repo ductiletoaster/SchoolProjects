@@ -54,12 +54,10 @@ int clock_replacement(int * parray, int npages, int nframes) {
 			
 			if (frame[m] == parray[i]) {			
 				for (j = 0; j < nframes; j++) {		
-                                    // The special case when the page value is the same as frame value introduced
+					// The special case when the page value is the same as frame value introduced
 					if (frame[j] == 0) { 
-                                                // Set pointer to empty slot in the clock before frames are filled.	
-                                                m = j;	
-                                                // Alternative to setting pointer to the same value.
-						flag = 1;	
+						m = j;	// Set pointer to empty slot in the clock before frames are filled. 
+						flag = 1; // Alternative to setting pointer to the same value.
 						break;				
 					}
 				}
@@ -120,15 +118,15 @@ int line_replacement(int * parray, int npages, int nframes) {
 		k = 0;
 
 		for (g = 0; g < nframes; g++) {
-                        //see if the page value is not in frame.
+			// See if the page value is not in frame.
 			if (parray[m] != frame[g]) 
 			k++;
 		}
 
-                //The page value was not foung if k == nframes
+		// The page value was not foung if k == nframes
 		if (k == nframes) {	
 			nfaults++;
-                        //If frames are not populated place in empty space
+			// If frames are not populated place in empty space
 			if (a < nframes) {		
 				frame[a] = parray[m];
 				a++;
@@ -137,28 +135,24 @@ int line_replacement(int * parray, int npages, int nframes) {
 			else {
 				for (j = 0; j < nframes; j++) {
 					w[j] = 0;
-                                        //iterate downward on parray
+					// Iterate downward on parray
 					for (g = m-1; g < npages; g--) {		
-                                                //If the frame != page, then add one in
-                                                //parray w. This is for lack of frequency.
+						//If the frame != page, then add one in parray w. This is for lack of frequency
 						if (frame[j] != parray[g])	
 							w[j]++;			
-						else	
-                                                        //If value in frame is same as page,Stop.
-							break;			
+						else       
+							break;	// If value in frame is same as page,Stop.
 					}
 				}
 
-				for (j = 0; j < nframes; j++)			
-                                        //copying parray b to parray w
-					b[j] = w[j];
+				for (j = 0; j < nframes; j++)
+					b[j] = w[j]; // Copying parray b to parray w
 
 				for (j = 0; j < nframes; j++) {
 					for(g = j; g < nframes; g++) {	
 
-						if (b[j] < b[g]) {		
-                                                        //organizing frequency of frames in ascending order where zero
-                                                        //is most frequent
+						// Organizing frequency of frames in ascending order where zero is most frequent
+						if (b[j] < b[g]) {
 							t = b[j];		
 							b[j] = b[g];
 							b[g] = t;
@@ -202,13 +196,12 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 	}
 
 	for (j = 0; j < npages; j++) {	
-		fl0 = 0; //set flags to zero
+		fl0 = 0; // Set flags to zero
 		fl1 = 0;
 
 		for (i = 0; i < nframes; i++) {
+			// Check the frames to see if it contains page. Set flags to the one if same and then break.
 			if (frame[i] == parray[j]) {	
-                                //check the frames to see if it contains page.
-                                //set flags to the one if same and then break.
 				fl0 = 1;		
 				fl1 = 1;
 				break;
@@ -217,14 +210,11 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 
 		if (fl0 == 0) {
 			for (i = 0; i < nframes; i++) {
-                                //If frame is -1, that means that the frame is not full.
-				if (frame[i] == -1) {		
-                                        //place page into frame
-					frame[i] = parray[j];	
-                                        //set flag 1 to 1
-					fl1 = 1;		
-                                        //increment fault Count
-					nfaults++;		
+                // If frame is -1, that means that the frame is not full.
+				if (frame[i] == -1) {
+					frame[i] = parray[j]; // Place page into frame
+					fl1 = 1; // Set flag 1 to 1
+					nfaults++; // Increment fault Count
 					break;
 				}
 			}
@@ -233,16 +223,14 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 		if (fl1 == 0) {
 			for (i = 0; i < nframes; i++)	
 				lg[i]=0;
-                        
-                        //Checks to see if any of the frames are
-                        //used later on in the Pages.
+			
+			// Checks to see if any of the frames are used later on in the Pages.
 			for (i = 0; i < nframes; i++) {		
 				for (k = j + 1; k < npages; k++) {		
-                                        //if the frame is used in the future then
-                                        //find the distance between the two and put it into lg[i]
+					
+					// If the frame is used in the future then find the distance between the two and put it into lg[i]
 					if (frame[i] == parray[k]) {	
-						lg[i] = k - j;	
-                                                //break out of loop
+						lg[i] = k - j;
 						break;		
 					}
 				}
@@ -252,8 +240,7 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 			for (i = 0; i < nframes; i++) {
 
 				if (lg[i] == 0) {			
-                                        //if frame was not used in future, then the pinter 
-                                        //is set to the point which is to be replaced later.
+					// If frame was not used in future, then the pinter is set to the point which is to be replaced later.
 					index = i;
 					f = 1;
 					break;
@@ -264,16 +251,17 @@ int optimal_replacement(int * parray, int npages, int nframes) {
 				m = lg[0];
 				index = 0;
 				for (i = 1; i < nframes; i++) {
-                                        //search for the frame which is repeated furthest away in the page.
+					// Search for the frame which is repeated furthest away in the page.
 					if (m < lg[i]) {		
 						m = lg[i];
 						index = i;
 					}
 				}
 			}
-                        //place page into frame
-			frame[index] = parray[j];				
-                        //increment fault count
+			// Place page into frame
+			frame[index] = parray[j];		
+
+			// Increment fault count
 			nfaults++;					
 		}
 	}
