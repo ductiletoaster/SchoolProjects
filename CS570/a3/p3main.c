@@ -11,9 +11,10 @@
 #include "p2.h"
 
 /**
- * Initializes Program one
+ * Initializes Program three
  */
-int main() {
+int main(int argc, char *argv[]) {
+	
 	// Initialize Local Variables
 
 

@@ -13,3 +13,10 @@
 /**
  * 
  */
+char * timeremaining(int stime) {
+	
+	char *remaining;
+	printf("%d seconds remaining", stime);
+	return  remaining;
+
+}
