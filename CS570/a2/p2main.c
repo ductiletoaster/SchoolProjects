@@ -21,7 +21,7 @@ int main() {
 	int parray[STORAGE];
 
 	// Get the number of frames from user input
-	printf("\nEnter number of frames: ");
+	printf("\nEnter the page frames in memory: ");
 	scanf("%d", &nframes);
 	printf("\n");
 

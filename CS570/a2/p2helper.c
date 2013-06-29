@@ -19,7 +19,7 @@ int file_exists(const char * filename) {
 }
 
 /**
- * Open file and create file if it doesnt exist
+ * Open file and create file if it doesn't exist
  */
 int file_read(const char * filename, void * contents, size_t size) {
 	// Declare local variables
