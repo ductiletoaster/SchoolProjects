@@ -2,7 +2,7 @@
 # @author: Brian Gebel, Abhishek Choudhary
 # @username: masc0974, masc0980
 # @classInfo: CS570, Summer 2013
-# @Assignment # 2, Page replacement algorithms
+# @Assignment # 3, implement an interruptible clock and countdown timer
 # @filename: makefile
 
 ########################################
