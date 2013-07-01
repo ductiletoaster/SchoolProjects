@@ -8,7 +8,7 @@
  */
 
 // Program includes
-#include "p2.h"
+#include "p3.h"
 
 /**
  * 
@@ -17,6 +17,6 @@ char * timeremaining(int stime) {
 	
 	char *remaining;
 	printf("%d seconds remaining", stime);
-	return  remaining;
+	return remaining;
 
 }
