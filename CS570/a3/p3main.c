@@ -16,44 +16,51 @@
 int main(int argc, char *argv[]) {
 	
 	// Initialize Local Variables
-	int status1 = 0, status2 = 0, secondsInt = 6; //default to 6 seconds
+	int status1 = 0; 
+	int status2 = 0;
+	int secondsInt; // default to 6 seconds
 	time_t timer;
 	char buffer[25];
 	struct tm* tm_info;
 	char *timeLeftStr;
 	int fd[2];	//file descriptor for piping
 
-	pid_t firstChild, secondChild;
+	// Intialize pid variables for new children
+	pid_t fchild;
+	pid_t schild;
 
-	if(pipe(fd)){		//make pipe and check to see it opened correctly.
-		fprintf (stderr, "Pipe failed.\n");
-        	return EXIT_FAILURE;	
+	if(pipe(fd)) {		// make pipe and check to see it opened correctly.
+		perror("Pipe failed");
+        exit(EXIT_FAILURE);
 	}
 	
+	// Set variables to program arguments
 	if (argc >= 2 )
 		secondsInt = atoi(argv[1]);
-	if (secondsInt == 0){
-		printf("Invalid Argument. Try an Integer...\n\n");
-		exit(1);
+
+	// Check time period is valid
+	if (secondsInt > 1) {
+		printf("Invalid Argument. Reverting to default of %d seconds", DEFAULTTIME);
+		secondsInt = DEFAULTTIME;
 	}
 	
-	printf("\nUsing %d seconds:\n", secondsInt);
-	printf("-----------------\n\n");
+	printf("\nProgram allotted %d seconds:\n", secondsInt);
+	printf("----------------------------------\n\n");
 
-	firstChild = fork(); //create first child
+	fchild = fork(); // create first child
 	
-	if (firstChild != 0){ //In parent process from first child
+	if (fchild != 0) { //In parent process from first child
 		
 		printf("Parent doing work\n");	
-		secondChild = fork(); //create second child
-		waitpid(secondChild, &status2, 0);
-		waitpid(firstChild, &status1, 0);
+		schild = fork(); //create second child
+		waitpid(schild, &status2, 0);
+		waitpid(fchild, &status1, 0);
 	
-		if (secondChild != 0){ //In parent process from second child
+		if (schild != 0){ //In parent process from second child
 			printf("Back to parent from second child\n");
 			exit(1);
 		}
-		else{ //In second child
+		else { //In second child
 			while (secondsInt > 0){
 				sleep(1);
 				close(fd[0]); //Close reading in pipe
@@ -68,9 +75,9 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	
-	else{ //in first child
+	else { // in first child
 
-		while(1){
+		while(1) {
 			
 			close(fd[1]); //close writing in pipe
 			read(fd[0], &secondsInt, sizeof(secondsInt)); // read in from second child.

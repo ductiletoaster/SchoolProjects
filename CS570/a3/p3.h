@@ -24,7 +24,7 @@
 #define TRUE 1
 
 // Global definitions
-#define STORAGE 64
+#define DEFAULTTIME 5
 
 // Included guard definition 
 #ifndef P1_H_INCLUDED
