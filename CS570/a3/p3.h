@@ -24,12 +24,15 @@
 #define TRUE 1
 
 // Global definitions
-#define DEFAULTTIME 5
+#define DEFAULTTIME 6
+#define NUMPIPES 2
+#define STORAGE 32
 
 // Included guard definition 
 #ifndef P1_H_INCLUDED
 #define P1_H_INCLUDED
 
-char * timeremaining(int);
+int first_child(int, int, int);
+int second_child(int, int, int);
 
 #endif

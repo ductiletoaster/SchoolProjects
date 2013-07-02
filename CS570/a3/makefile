@@ -6,7 +6,7 @@
 # @filename: makefile
 
 ########################################
-## Makefile for Program 1
+## Makefile for Program 3
 ########################################
 
 ## Program executable name ##
