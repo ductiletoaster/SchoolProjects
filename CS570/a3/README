@@ -35,3 +35,4 @@ N/A
 Lessons learned:
 We learned how to implement an interruptable clock and countdown timer for the two child processes
 Use of countdown timer to notify one child process when its sibling to terminate.
+We learnt the basic concept of busy waiting, i.e the process repeatedly checks for a condition to be true.
