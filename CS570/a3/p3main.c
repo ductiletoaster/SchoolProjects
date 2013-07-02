@@ -3,7 +3,7 @@
  * @username: masc0974, masc0980
  * @classInfo: CS570, Summer 2013
  * @Assignment # 3, implement an interruptible clock and countdown timer
- * @filename: p2main.c
+ * @filename: p3main.c
  *
  */
 

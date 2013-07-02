@@ -1,0 +1,37 @@
+/** 
+ * @author: Brian Gebel, Abhishek Choudhary
+ * @username: masc0974, masc0980
+ * @classInfo: CS570, Summer 2013
+ * @Assignment # 3, implement an interruptible clock and countdown timer
+ * @filename: README
+ *
+ */
+
+Files in the project:
+    makefile
+    p3.h
+    p3helper.c 
+    p3main.c
+    README
+
+Compile Instructions:
+>>> make
+Just run the make file.
+If you would like to get rid of the object files, you can "make clean" by activating the clean routine in the makefile.
+
+Operating instructions:
+>>>./a3 in order to run the executable (we have taken the default value of 6 seconds)
+
+List of significant design ideas:
+We had the main template i.e the main functions in the p3main.c 
+The helper functions i.e the two routines to be executed by the two child processes are in the p3helper.c
+
+List of extra features: 
+N/A
+
+List of known bugs:
+N/A
+
+Lessons learned:
+We learned how to implement an interruptable clock and countdown timer for the two child processes
+Use of countdown timer to notify one child process when its sibling to terminate.
