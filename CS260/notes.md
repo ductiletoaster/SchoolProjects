@@ -8,3 +8,4 @@ Hardware control
 
 DirectX
 - Is a technology and C++ is the means in which we implement it
+- An api that abstracts the functionality for interfacing with the overall system
