@@ -14,12 +14,14 @@ DirectX
 ```
 Game Development (DirectX)
     |
-    |               Register
-Windows (GUI) ----- Create
+    |               Describe
+Windows (GUI) ----- Register
+    |               Create
     |               Show
-    |
 Event-Driven
 ```
+
+#### Describe
 Windows Programming
 - Primarily written in C++ (OOP)
 - Classes contain funtions and variables both of which are called members
@@ -30,4 +32,12 @@ WNDCLASSEX windowClass = { 0 };
 windowClass.lpfnWndProc = WindProc; // Callback function
 ```
 
+#### Register
+Pass the above class object by refrence to the register
+```CPP
+if (!RegisterClassEx(&windowClass))
+{
+    return -1 // Failed to register -- Handle error
+}
+```
 
