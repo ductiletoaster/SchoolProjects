@@ -40,4 +40,9 @@ if (!RegisterClassEx(&windowClass))
     return -1 // Failed to register -- Handle error
 }
 ```
-
+#### Create/Setup
+Windows are rectangular in shape. Define by 4 dimensions
+```CPP
+RECT rectangle = {0,0,640,480};
+AdjustWindowRect(&rectangle, WS_OVERLAPPEDWINDOW, FALSE); // False stands for now menu
+```
