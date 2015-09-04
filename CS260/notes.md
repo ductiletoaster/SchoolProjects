@@ -46,3 +46,9 @@ Windows are rectangular in shape. Define by 4 dimensions
 RECT rectangle = {0,0,640,480};
 AdjustWindowRect(&rectangle, WS_OVERLAPPEDWINDOW, FALSE); // False stands for now menu
 ```
+
+#### Show
+After creating the window handle (HWND) you can show the window as followed
+```CPP
+ShowWindow(hwnd, commandShow);
+```
