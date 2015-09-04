@@ -52,3 +52,9 @@ After creating the window handle (HWND) you can show the window as followed
 ```CPP
 ShowWindow(hwnd, commandShow);
 ```
+
+#### Callbacks
+Just like standard C++ we can only have on return type LRESULT but we also can include an attribute type CALLBACK
+```CPP
+LRESULT CALLBACK WndProc
+```
