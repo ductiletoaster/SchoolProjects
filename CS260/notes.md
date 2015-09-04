@@ -20,6 +20,6 @@ Windows (GUI) ----- Create
 Event-Driven
 ```
 Windows Programming
-- Primarilly written in C++
+- Primarily written in C++ (OOP)
 - Classes contain funtions and variables both of which are called members
 
