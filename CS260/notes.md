@@ -17,9 +17,11 @@ Game Development (DirectX)
     |               Register
 Windows (GUI) ----- Create
     |               Show
+    |
 Event-Driven
 ```
 Windows Programming
 - Primarily written in C++ (OOP)
 - Classes contain funtions and variables both of which are called members
+- lpfnWndProc is a refrence to a callback function/procedure
 
