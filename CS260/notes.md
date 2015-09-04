@@ -9,3 +9,17 @@ Hardware control
 DirectX
 - Is a technology and C++ is the means in which we implement it
 - An api that abstracts the functionality for interfacing with the overall system
+
+###09.03.2015
+```
+Game Development (DirectX)
+    |
+    |               Register
+Windows (GUI) ----- Create
+    |               Show
+Event-Driven
+```
+Windows Programming
+- Primarilly written in C++
+- Classes contain funtions and variables both of which are called members
+
