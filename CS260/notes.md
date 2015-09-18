@@ -21,7 +21,7 @@ Windows (GUI) ----- Register
 Event-Driven
 ```
 
-#### Describe
+##### Describe
 Windows Programming
 - Primarily written in C++ (OOP)
 - Classes contain funtions and variables both of which are called members
@@ -32,7 +32,7 @@ WNDCLASSEX windowClass = { 0 };
 windowClass.lpfnWndProc = WindProc; // Callback function
 ```
 
-#### Register
+##### Register
 Pass the above class object by refrence to the register
 ```CPP
 if (!RegisterClassEx(&windowClass))
@@ -40,20 +40,20 @@ if (!RegisterClassEx(&windowClass))
     return -1 // Failed to register -- Handle error
 }
 ```
-#### Create/Setup
+##### Create/Setup
 Windows are rectangular in shape. Define by 4 dimensions
 ```CPP
 RECT rectangle = {0,0,640,480};
 AdjustWindowRect(&rectangle, WS_OVERLAPPEDWINDOW, FALSE); // False stands for now menu
 ```
 
-#### Show
+##### Show
 After creating the window handle (HWND) you can show the window as followed
 ```CPP
 ShowWindow(hwnd, commandShow);
 ```
 
-#### Callbacks
+##### Callbacks
 Just like standard C++ we can only have on return type LRESULT but we also can include an attribute type CALLBACK
 ```CPP
 LRESULT CALLBACK WndProc
@@ -64,12 +64,17 @@ LRESULT CALLBACK WndProc
 - Grid like area to place objects x,y axis
 - A plane is a 2d area that stretches to infinity
 
-3D Rendering
+##### 3D Rendering
 - 3D games of course add a 3rd axis z for (x,y,z)
 - Similar to the plane, the Cube has an infinite number of planes stacked on top of each other
 
-Textures
+##### Textures
 - Are images that is mapped over a surface to simulate its complexity in a non-geometric sense (Wall brick)
 - Core to both 2D and 3D games
 - Types include color, light, shadow and alpha maps (transparency)
 - "Lookup texture" store values for a pixel that can be used during lighting calculations for example used for an algorithm taking place during rendering.
+
+##### Sprites
+- 2D graphical element that appears on screen
+- Textured 2d shape (rectangle, square) used for backgrounds, weapons, etc.
+- Animations in 2D takes a series of sprites and display them in rapid succession
