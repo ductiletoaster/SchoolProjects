@@ -59,7 +59,7 @@ Just like standard C++ we can only have on return type LRESULT but we also can i
 LRESULT CALLBACK WndProc
 ```
 ###09.17.2015
-2D Rendering
+##### 2D Rendering
 - Adobe Flash, MS Silverlight, HTML5 are examples of technologies that are often used for web based games
 - Grid like area to place objects x,y axis
 - A plane is a 2d area that stretches to infinity
