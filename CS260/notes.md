@@ -78,3 +78,19 @@ LRESULT CALLBACK WndProc
 - 2D graphical element that appears on screen
 - Textured 2d shape (rectangle, square) used for backgrounds, weapons, etc.
 - Animations in 2D takes a series of sprites and display them in rapid succession
+
+#### Vertex
+- A point with a series of attributes (position, color, texture coord) that defines a region of a shape
+- Graphics hardware uses the attr to draw a particular shape
+
+#### Shape
+- Collection of verticies connected together with edges (lines) whose insides are shaded in by the graphics hardware
+- A shape is referred to as lines if it has 2 connected points or as polygons if it has 3 or more connected points
+
+#### Mesh
+- An object made up if polygons, specifically triangle polygons
+    - A triangle list: is an array of individual triangles that are independent of one another
+    - A triangle strip: is an array where adding 1 more vertex is sufficent to add another triangle
+    - A triangle fan: always uses the first vertex along with the previous vertex and the new one
+- A mode is a collection of meshes
+    - A character model can be made up of the head, legs and other body parts (meshes)
