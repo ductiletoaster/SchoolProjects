@@ -67,3 +67,9 @@ LRESULT CALLBACK WndProc
 3D Rendering
 - 3D games of course add a 3rd axis z for (x,y,z)
 - Similar to the plane, the Cube has an infinite number of planes stacked on top of each other
+
+Textures
+- Are images that is mapped over a surface to simulate its complexity in a non-geometric sense (Wall brick)
+- Core to both 2D and 3D games
+- Types include color, light, shadow and alpha maps (transparency)
+- "Lookup texture" store values for a pixel that can be used during lighting calculations for example used for an algorithm taking place during rendering.
