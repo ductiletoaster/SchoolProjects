@@ -63,7 +63,7 @@ LRESULT CALLBACK WndProc
 - Adobe Flash, MS Silverlight, HTML5 are examples of technologies that are often used for web based games
 - Grid like area to place objects x,y axis
 - A plane is a 2d area that stretches to infinity
-- 
+
 3D Rendering
 - 3D games of course add a 3rd axis z for (x,y,z)
 - Similar to the plane, the Cube has an infinite number of planes stacked on top of each other
